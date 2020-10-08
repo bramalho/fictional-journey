@@ -23,7 +23,7 @@ class ProductFixtures extends Fixture
             $product = new Product();
             $product->setName('Product ' . $i);
             $product->setPrice(rand(100, 1000));
-            $product->setAuthor($categories[$i % 2 == 0 ? 0 : 1]);
+            $product->setCategory($categories[$i % 2 == 0 ? 0 : 1]);
             $manager->persist($product);
         }
 
