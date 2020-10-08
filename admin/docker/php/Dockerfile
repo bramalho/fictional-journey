@@ -4,8 +4,8 @@ RUN apk update \
     && apk add  --no-cache git mysql-client curl libzip-dev libmcrypt libmcrypt-dev openssh-client icu-dev \
     libxml2-dev freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf \
     && docker-php-source extract \
-    && pecl install xdebug redis \
-    && docker-php-ext-enable xdebug redis \
+    && pecl install xdebug redis mongodb \
+    && docker-php-ext-enable xdebug redis mongodb \
     && docker-php-source delete \
     && docker-php-ext-install pdo_mysql soap intl zip \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \

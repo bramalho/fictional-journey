@@ -29,3 +29,9 @@ services:
       MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
+
+  mongodb:
+    image: mongo:4.2.10
+    ports:
+      - "27017:27017"
+    command: mongod --logpath=/dev/null # --quiet
