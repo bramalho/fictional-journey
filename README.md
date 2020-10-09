@@ -1,10 +1,12 @@
 # Fictional Journey
 
+```bash
+docker-compose up -d
+```
+
 ## Admin
 
 ```bash
-docker-compose up -d
-
 docker-compose exec -u www-data admin_php sh
 
 composer install
@@ -15,6 +17,18 @@ composer install
 
 ./bin/console app:sync:entities-documents
 ```
+
+Go to [localhost](http://localhost)
+
+## API
+
+```bash
+docker-compose exec -u www-data api_php sh
+
+composer install
+```
+
+Go to [localhost:88/graphiql](http://localhost:88/graphiql)
 
 ## MongoDB
 
