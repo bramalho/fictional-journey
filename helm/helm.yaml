@@ -4,6 +4,7 @@ settings:
 
 helmRepos:
   helm-stable: "https://kubernetes-charts.storage.googleapis.com"
+  bitnami: "https://charts.bitnami.com/bitnami"
 
 namespaces:
   admin:
@@ -18,4 +19,12 @@ apps:
     chart: "helm-stable/mysql"
     version: 1.6.7
     valuesFile: "./mysql/values.yaml"
+    priority: -1
+
+  mongodb:
+    namespace: "api"
+    enabled: true
+    chart: "bitnami/mongodb"
+    version: 9.2.4
+    valuesFile: "./mongodb/values.yaml"
     priority: -1
