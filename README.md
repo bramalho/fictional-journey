@@ -3,11 +3,9 @@
 ## Admin
 
 ```bash
-cd admin
-
 docker-compose up -d
 
-docker-compose exec -u www-data php sh
+docker-compose exec -u www-data admin_php sh
 
 composer install
 
@@ -16,4 +14,17 @@ composer install
 ./bin/console doctrine:fixtures:load
 
 ./bin/console app:sync:entities-documents
+```
+
+## MongoDB
+
+```bash
+docker-compose exec mongodb sh
+
+mongo
+show dbs
+use app
+show collections
+db.Category.find()
+db.Product.find()
 ```

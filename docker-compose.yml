@@ -1,24 +1,25 @@
 version: '3'
 
 services:
-  php:
-    build: ./docker/php
+  admin_php:
+    build: ./admin/docker/php
     volumes:
-      - ./:/var/www/app:delegated
-      - ./docker/php/php.ini:/usr/local/etc/php/php.ini:delegated
+      - ./admin/:/var/www/app:delegated
+      - ./admin/docker/php/php.ini:/usr/local/etc/php/php.ini:delegated
       - ~/.composer/docker-cache/:/root/.composer:cached
     depends_on:
       - mysql
+      - mongodb
 
-  web:
+  admin_web:
     image: nginx:1.17.3
     ports:
       - "80:80"
     volumes:
-      - ./:/var/www/app:delegated
-      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:delegated
+      - ./admin/:/var/www/app:delegated
+      - ./admin/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:delegated
     depends_on:
-      - php
+      - admin_php
 
   mysql:
     image: mysql:8.0
