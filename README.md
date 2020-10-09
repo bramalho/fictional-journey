@@ -148,3 +148,22 @@ docker build . \
 
 docker push bramalho/fictional-journey-nginx-api
 ```
+
+## Kubernetes
+
+```bash
+minikube start --vm=true --driver=hyperkit
+
+minikube addons enable ingress
+
+minikube ip
+
+sudo vim /etc/hosts
+# YOUR_MINIKUBE_IP admin.fictional-journey.com api.fictional-journey.com
+```
+
+```bash
+helmsman -apply -f helm/helm.yaml -debug -verbose
+
+minikube dashboard
+```

@@ -1,0 +1,21 @@
+settings:
+  kubeContext: "minikube"
+  globalMaxHistory: 5
+
+helmRepos:
+  helm-stable: "https://kubernetes-charts.storage.googleapis.com"
+
+namespaces:
+  admin:
+    protected: false
+  api:
+    protected: false
+
+apps:
+  mysql:
+    namespace: "admin"
+    enabled: true
+    chart: "helm-stable/mysql"
+    version: 1.6.7
+    valuesFile: "./mysql/values.yaml"
+    priority: -1
