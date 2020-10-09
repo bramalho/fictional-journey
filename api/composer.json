@@ -14,6 +14,7 @@
         "symfony/yaml": "5.1.*"
     },
     "require-dev": {
+        "overblog/graphiql-bundle": "^0.2.1",
         "symfony/maker-bundle": "^1.21"
     },
     "config": {
@@ -59,7 +60,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "5.1.*"
         }
     }
