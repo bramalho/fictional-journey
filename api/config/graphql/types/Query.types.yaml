@@ -1,0 +1,28 @@
+Query:
+  type: object
+  config:
+    fields:
+      category:
+        type: Category
+        args:
+          uid:
+            type: String
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\CategoryResolver::resolve", [args["uid"]])'
+      category_list:
+        type: CategoryList
+        args:
+          limit:
+            type: Int
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\CategoryListResolver::resolve", [args])'
+      product:
+        type: Product
+        args:
+          uid:
+            type: String
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\ProductResolver::resolve", [args["uid"]])'
+      product_list:
+        type: ProductList
+        args:
+          limit:
+            type: Int
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\ProductListResolver::resolve", [args])'

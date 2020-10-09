@@ -1,0 +1,12 @@
+Category:
+  type: object
+  config:
+    resolveField: '@=resolver("App\\GraphQL\\Resolver\\CategoryResolver", [info, value, args])'
+    fields:
+      uid:
+        type: String
+      name:
+        type: String
+      products:
+        type: ProductConnection
+        argsBuilder: Relay::ForwardConnection

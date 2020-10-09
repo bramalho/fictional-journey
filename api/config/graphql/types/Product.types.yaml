@@ -1,0 +1,13 @@
+Product:
+  type: object
+  config:
+    resolveField: '@=resolver("App\\GraphQL\\Resolver\\ProductResolver", [info, value, args])'
+    fields:
+      uid:
+        type: String
+      name:
+        type: String
+      price:
+        type: Int
+      category:
+        type: Category

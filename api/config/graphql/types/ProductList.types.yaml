@@ -1,0 +1,6 @@
+ProductList:
+  type: object
+  config:
+    fields:
+      products:
+        type: "[Product]"

@@ -1,0 +1,6 @@
+CategoryList:
+  type: object
+  config:
+    fields:
+      categories:
+        type: "[Category]"
