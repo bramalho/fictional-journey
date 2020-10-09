@@ -22,6 +22,11 @@ class Category
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $uid;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $name;
 
     /**
@@ -37,6 +42,18 @@ class Category
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getUid(): ?string
+    {
+        return $this->uid;
+    }
+
+    public function setUid(string $uid): self
+    {
+        $this->uid = $uid;
+
+        return $this;
     }
 
     public function getName(): ?string
