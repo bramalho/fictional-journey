@@ -98,3 +98,53 @@ show collections
 db.Category.find()
 db.Product.find()
 ```
+
+## Build Images
+
+```bash
+docker login
+```
+
+Base PHP Image
+
+```bash
+docker build . \
+    -t bramalho/fictional-journey-php-base \
+    -f docker/php-base/Dockerfile
+
+docker push bramalho/fictional-journey-php-base
+```
+
+Admin Images
+
+```bash
+docker build . \
+    -t bramalho/fictional-journey-php-admin \
+    -f docker/php-admin/Dockerfile \
+    --build-arg BASE_IMAGE=bramalho/fictional-journey-php-base
+
+docker push bramalho/fictional-journey-php-admin
+
+docker build . \
+    -t bramalho/fictional-journey-nginx-admin \
+    -f docker/nginx-admin/Dockerfile
+
+docker push bramalho/fictional-journey-nginx-admin
+```
+
+API Images
+
+```bash
+docker build . \
+    -t bramalho/fictional-journey-php-api \
+    -f docker/php-api/Dockerfile \
+    --build-arg BASE_IMAGE=bramalho/fictional-journey-php-base
+
+docker push bramalho/fictional-journey-php-api
+
+docker build . \
+    -t bramalho/fictional-journey-nginx-api \
+    -f docker/nginx-api/Dockerfile
+
+docker push bramalho/fictional-journey-nginx-api
+```
