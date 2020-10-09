@@ -1,5 +1,14 @@
 # Fictional Journey
 
+- [Docker Compose](#docker-compose)
+- [Admin](#admin)
+- [API](#api)
+- [MongoDB](#mongodb)
+- [Build Images](#build-images)
+- [Kubernetes](#kubernetes)
+
+## Docker Compose
+
 ```bash
 docker-compose up -d
 ```
