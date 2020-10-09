@@ -30,7 +30,7 @@ class Product
     public $price;
 
     /**
-     * @MongoDB\ReferenceOne(targetDocument="Category")
+     * @MongoDB\ReferenceOne(targetDocument="App\Document\Category")
      */
     public $category;
 }
