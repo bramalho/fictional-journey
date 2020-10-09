@@ -2,11 +2,11 @@ version: '3'
 
 services:
   admin_php:
-    build: ./admin/docker/php
+    build: ./docker/php-local
     volumes:
-      - ./admin/:/var/www/app:delegated
-      - ./admin/docker/php/php.ini:/usr/local/etc/php/php.ini:delegated
-      - ~/.composer/docker-cache/:/root/.composer:cached
+      - ./admin/:/var/www/app
+      - ./docker/config/php/php.ini:/usr/local/etc/php/php.ini
+      - ~/.composer/docker-cache/:/root/.composer
     depends_on:
       - mysql
       - mongodb
@@ -16,17 +16,17 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./admin/:/var/www/app:delegated
-      - ./admin/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:delegated
+      - ./admin/:/var/www/app
+      - ./docker/config/nginx/admin.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - admin_php
 
   api_php:
-    build: ./api/docker/php
+    build: ./docker/php-local
     volumes:
-      - ./api/:/var/www/app:delegated
-      - ./api/docker/php/php.ini:/usr/local/etc/php/php.ini:delegated
-      - ~/.composer/docker-cache/:/root/.composer:cached
+      - ./api/:/var/www/app
+      - ./docker/config/php/php.ini:/usr/local/etc/php/php.ini
+      - ~/.composer/docker-cache/:/root/.composer
     depends_on:
       - mysql
       - mongodb
@@ -36,8 +36,8 @@ services:
     ports:
       - "88:80"
     volumes:
-      - ./api/:/var/www/app:delegated
-      - ./api/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:delegated
+      - ./api/:/var/www/app
+      - ./docker/config/nginx/api.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - api_php
 
