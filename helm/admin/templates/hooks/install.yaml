@@ -1,0 +1,60 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "admin.fullname" . }}-install
+  labels:
+    {{- include "admin.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "-2"
+spec:
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "admin.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "admin.serviceAccountName" . }}
+      restartPolicy: Never
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.php.image }}:{{ .Values.php.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          command:
+            - sh
+            - -c
+            - ./bin/console doctrine:schema:update --force && ./bin/console doctrine:fixtures:load --no-interaction
+          envFrom:
+          - secretRef:
+              name: {{ include "admin.fullname" . }}-dotenv
+      initContainers:
+        - name: wait-for-container
+          image: docker.io/bramalho/wait-for-container:latest
+          command: ["/entrypoint.sh"]
+          args: ["wait_for", "mysql:DATABASE_URL"]
+          envFrom:
+          - secretRef:
+              name: {{ include "admin.fullname" . }}-dotenv
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
