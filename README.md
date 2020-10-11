@@ -136,7 +136,8 @@ docker push bramalho/fictional-journey-php-admin
 
 docker build . \
     -t bramalho/fictional-journey-nginx-admin \
-    -f docker/nginx-admin/Dockerfile
+    -f docker/nginx-admin/Dockerfile \
+    --build-arg PUBLIC_IMAGE=bramalho/fictional-journey-php-admin
 
 docker push bramalho/fictional-journey-nginx-admin
 ```
@@ -153,7 +154,8 @@ docker push bramalho/fictional-journey-php-api
 
 docker build . \
     -t bramalho/fictional-journey-nginx-api \
-    -f docker/nginx-api/Dockerfile
+    -f docker/nginx-api/Dockerfile \
+    --build-arg PUBLIC_IMAGE=bramalho/fictional-journey-php-api
 
 docker push bramalho/fictional-journey-nginx-api
 ```
