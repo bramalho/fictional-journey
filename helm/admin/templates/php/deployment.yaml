@@ -37,6 +37,9 @@ spec:
             - containerPort: 9000
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          envFrom:
+          - secretRef:
+              name: {{ include "admin.fullname" . }}-dotenv
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

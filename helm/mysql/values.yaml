@@ -25,7 +25,7 @@ mysqlRootPassword: root
 
 ## Create a database user
 ##
-mysqlUser: app
+mysqlUser: user
 ## Default: random 10 character string
 mysqlPassword: password
 
