@@ -178,3 +178,13 @@ helmsman -apply -f helm/helm.yaml -debug -verbose
 
 minikube dashboard
 ```
+
+
+Useful Commands
+
+```bash
+kubectl get pods --all-namespaces
+
+kubectl exec -i -t admin-php-f6bd948b5-ql58h --container admin --namespace=admin -- /bin/sh
+
+```
