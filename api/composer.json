@@ -5,6 +5,7 @@
         "php": ">=7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/cache": "^1.11",
         "doctrine/mongodb-odm-bundle": "^4.2",
         "overblog/graphql-bundle": "^0.13.4",
         "symfony/console": "5.1.*",
