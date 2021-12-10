@@ -3,7 +3,7 @@ settings:
   globalMaxHistory: 5
 
 helmRepos:
-  helm-stable: "https://kubernetes-charts.storage.googleapis.com"
+  stable: "https://charts.helm.sh/stable"
   bitnami: "https://charts.bitnami.com/bitnami"
 
 namespaces:
@@ -13,10 +13,11 @@ namespaces:
     protected: false
 
 apps:
+
   mysql:
     namespace: "admin"
     enabled: true
-    chart: "helm-stable/mysql"
+    chart: "stable/mysql"
     version: 1.6.7
     valuesFile: "./mysql/values.yaml"
     priority: -1

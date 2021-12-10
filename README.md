@@ -116,7 +116,7 @@ db.Product.find()
 docker login
 ```
 
-Base PHP Image
+### Base PHP
 
 ```bash
 docker build . \
@@ -126,7 +126,7 @@ docker build . \
 docker push bramalho/fictional-journey-php-base
 ```
 
-Admin Images
+### Admin
 
 ```bash
 docker build . \
@@ -144,7 +144,7 @@ docker build . \
 docker push bramalho/fictional-journey-nginx-admin
 ```
 
-API Images
+### API
 
 ```bash
 docker build . \
@@ -162,17 +162,27 @@ docker build . \
 docker push bramalho/fictional-journey-nginx-api
 ```
 
+### Wait for Container
+
+```bash
+docker build . \
+    -t bramalho/fictional-journey-wait-for-container \
+    -f docker/wait-for-container/Dockerfile
+
+docker push bramalho/fictional-journey-wait-for-container
+```
+
 ## Kubernetes
 
 ```bash
-minikube start --vm=true --driver=hyperkit
+minikube start
 
 minikube addons enable ingress
 
 minikube ip
 
 sudo vim /etc/hosts
-# YOUR_MINIKUBE_IP admin.fictional-journey.com api.fictional-journey.com
+# YOUR_MINIKUBE_IP admin.fictional-journey.local api.fictional-journey.local
 ```
 
 ```bash
@@ -181,8 +191,7 @@ helmsman -apply -f helm/helm.yaml -debug -verbose
 minikube dashboard
 ```
 
-
-Useful Commands
+### Useful Commands
 
 ```bash
 kubectl get pods --all-namespaces
