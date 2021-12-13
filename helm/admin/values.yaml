@@ -50,7 +50,7 @@ ingress:
     - host: admin.fictional-journey.local
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
   tls: []
 
 resources: {}
