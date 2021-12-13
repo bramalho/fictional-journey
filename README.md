@@ -191,6 +191,12 @@ helmsman -apply -f helm/helm.yaml -debug -verbose
 minikube dashboard
 ```
 
+You can also start a tunnel for each service
+```bash
+minikube service --url admin-nginx -n admin
+minikube service --url api-nginx -n api
+```
+
 ### Useful Commands
 
 ```bash
