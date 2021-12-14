@@ -20,8 +20,6 @@ docker-compose exec -u www-data admin_php sh
 
 composer install
 
-./bin/console doctrine:schema:update --force
-
 ./bin/console doctrine:migrations:migrate --allow-no-migration --no-interaction
 
 ./bin/console doctrine:fixtures:load --no-interaction
